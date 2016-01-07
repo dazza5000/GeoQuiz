@@ -44,28 +44,30 @@ public class CheatActivity extends AppCompatActivity {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerShownResult(true);
-            }
-        });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            int cx = mShowAnswer.getWidth() / 2;
-            int cy = mShowAnswer.getHeight() / 2;
-            float radius = mShowAnswer.getWidth();
-            Animator anim = ViewAnimationUtils.createCircularReveal(mShowAnswer, cx, cy, radius, 0);
-            anim.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
+                    int cx = mShowAnswer.getWidth() / 2;
+                    int cy = mShowAnswer.getHeight() / 2;
+                    float radius = mShowAnswer.getWidth();
+                    Animator anim = ViewAnimationUtils.createCircularReveal(mShowAnswer, cx, cy, radius, 0);
+                    anim.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mAnswerTextView.setVisibility(View.VISIBLE);
+                            mShowAnswer.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    anim.start();
+                } else {
                     mAnswerTextView.setVisibility(View.VISIBLE);
                     mShowAnswer.setVisibility(View.INVISIBLE);
                 }
-            });
-            anim.start();
-        } else {
-            mAnswerTextView.setVisibility(View.VISIBLE);
-            mShowAnswer.setVisibility(View.INVISIBLE);
-        }
+            }
+        });
+
+
 
     }
 
