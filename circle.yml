@@ -4,7 +4,7 @@
 
 general:
     artifacts:
-        - /home/ubuntu/your-app-name/app/build/outputs/apk/
+        - /home/ubuntu/GeoQuiz/app/build/outputs/apk/
 
 machine:
     environment:
@@ -12,8 +12,6 @@ machine:
 
 dependencies:
     override:
-        - chmod +x gradlew
-        - wget "https://services.gradle.org/distributions/gradle-2.10-bin.zip"; unzip gradle-2.10-bin.zip
         - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-23.0.2,android-23,extra-google-m2repository,extra-google-google_play_services,extra-android-support
         - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 
